@@ -1,0 +1,21 @@
+btr m, r -- btrl    %ecx, m32_init(%rip)
+btc m, r -- btrl    %ecx, m32_init(%rip)
+bts m, r -- btrl    %ecx, m32_init(%rip)
+bt m, r -- btrl    %ecx, m32_init(%rip)
+
+
+vmaskmovdqu
+vcvttpd2dq
+vcvtpd2ps
+vcvtpd2dq
+
+
+clflushopt
+
+cvttpd2dq
+vcvtpd2ps
+vcvttpd2dq
+vpsllw
+vpslld
+vpsllq
+vcvtpd2dq
