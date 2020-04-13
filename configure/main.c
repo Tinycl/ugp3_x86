@@ -151,30 +151,25 @@ int main(int argc, char *argv[])
     clock_t start, end;
     /* Set up watchdog */
     signal(SIGVTALRM, timeout);
-    new.it_interval.tv_sec = 0;
+    new.it_interval.tv_sec = 0; //interval timer
     new.it_interval.tv_usec = 0;
-    new.it_value.tv_sec = 0;
-    new.it_value.tv_usec = 2000;
+    new.it_value.tv_sec = 2; //s timer out
+    new.it_value.tv_usec = 0; //ms
     setitimer(ITIMER_VIRTUAL, &new, NULL);
 
     if(setjmp(wakeup_place)) {
 	/* if the evolved_function hung, the longjmp will bring back us here */
-	//printf("0 XX\n");
-	printf("0 0 0\n");
-    } else {
+	    printf("evolved_function: hung\n");
+        exit(0);
+    } else 
+	{
 	/* "normal" flow */
-	start = clock();
-	val = evolved_function();
-	end = clock();
-	printf("%ld %ld %ld\n", end-start, end-start, end-start); 	
-	/*	
-	fitness = 0;
-	for(m = 0x1; m; m <<= 1) {
-	    if(val & m) 
-		++fitness;
-	}
-	printf("%d %lx\n", fitness, val);
-	*/
+		//start = clock();
+		val = evolved_function();
+		//end = clock();
+		//printf("run clock is %ld\n", end-start);
+		printf("evolved_function: success\n"); 	
+	
     }
 
     return 0;
