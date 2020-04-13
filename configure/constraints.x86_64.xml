@@ -3817,7 +3817,7 @@
 					<prologue id="stringPrologue"/>
 					<epilogue id="stringEpilogue"/>
 					
-					<macros maxOccurs="3000" minOccurs="100" averageOccurs="800" sigma="700">
+					<macros maxOccurs="30000" minOccurs="5000" averageOccurs="8000" sigma="7000">
 
 						<!-- legacy two operands -->
 							<!-- 8 bit-->
@@ -4333,7 +4333,7 @@
 						</macro>
 						
 
-						<macro id="_legacy_jcc" weight="0">
+						<macro id="_legacy_jcc" weight="1">
 							<expression> 
 								<param ref="ins"/>	<param ref="target"/>
 							</expression>
@@ -4512,7 +4512,7 @@
 
 
 						<!-- fpu -->
-						<macro id="_fpu_" weight="0" >
+						<macro id="_fpu_" weight="1" >
 							<expression> 
 								<param ref="ins"/> 
 							</expression>
@@ -4520,7 +4520,7 @@
 								<item type="definedType" ref="fpu_" name="ins" />	
 							</parameters>
 						</macro>						
-						<macro id="_fpu_stx" weight="0" >
+						<macro id="_fpu_stx" weight="1" >
 							<expression> 
 								<param ref="ins"/>	<param ref="op1"/>
 							</expression>
@@ -4529,7 +4529,7 @@
 								<item type="definedType" ref="stx" name="op1" />	
 							</parameters>
 						</macro>
-						<macro id="_fpu_m16int" weight="0" >
+						<macro id="_fpu_m16int" weight="1" >
 							<expression> 
 								<param ref="ins"/>	<param ref="op1"/>
 							</expression>
@@ -4538,7 +4538,7 @@
 								<item type="definedType" ref="m16int" name="op1" />	
 							</parameters>
 						</macro>
-						<macro id="_fpu_m32fp" weight="0" >
+						<macro id="_fpu_m32fp" weight="1" >
 							<expression> 
 								<param ref="ins"/>	<param ref="op1"/>
 							</expression>
@@ -4547,7 +4547,7 @@
 								<item type="definedType" ref="m32fp" name="op1" />	
 							</parameters>
 						</macro>
-						<macro id="_fpu_m32int" weight="0" >
+						<macro id="_fpu_m32int" weight="1" >
 							<expression> 
 								<param ref="ins"/>	<param ref="op1"/>
 							</expression>
@@ -4556,7 +4556,7 @@
 								<item type="definedType" ref="m32int" name="op1" />	
 							</parameters>
 						</macro>
-						<macro id="_fpu_m64int" weight="0" >
+						<macro id="_fpu_m64int" weight="1" >
 							<expression> 
 								<param ref="ins"/>	<param ref="op1"/>
 							</expression>
@@ -4565,7 +4565,7 @@
 								<item type="definedType" ref="m64int" name="op1" />	
 							</parameters>
 						</macro>
-						<macro id="_fpu_m64fp" weight="0" >
+						<macro id="_fpu_m64fp" weight="1" >
 							<expression> 
 								<param ref="ins"/>	<param ref="op1"/>
 							</expression>
@@ -4574,7 +4574,7 @@
 								<item type="definedType" ref="m64fp" name="op1" />	
 							</parameters>
 						</macro>
-						<macro id="_fpu_m80" weight="0" >
+						<macro id="_fpu_m80" weight="1" >
 							<expression> 
 								<param ref="ins"/>	<param ref="op1"/>
 							</expression>
@@ -4583,7 +4583,7 @@
 								<item type="definedType" ref="m80" name="op1" />	
 							</parameters>
 						</macro>
-						<macro id="_fpu_stx_st0" weight="0" >
+						<macro id="_fpu_stx_st0" weight="1" >
 							<expression> 
 								<param ref="ins"/>	<param ref="op1"/>, <param ref="op2"/>
 							</expression>
@@ -4593,7 +4593,7 @@
 								<item type="definedType" ref="st0" name="op1" />
 							</parameters>
 						</macro>
-						<macro id="_fpu_st0_stx" weight="0" >
+						<macro id="_fpu_st0_stx" weight="1" >
 							<expression> 
 								<param ref="ins"/>	<param ref="op1"/>, <param ref="op2"/>
 							</expression>
