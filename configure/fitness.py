@@ -27,19 +27,22 @@ if not os.path.exists(os.getcwd() + "/tprog"):
 start_time = time.time()
 subtprog = subprocess.Popen("./tprog", stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
 subtprog.wait()
+hung_flag = 0
 end_time = time.time()
 tproglogs = subtprog.stdout.readlines()
 for log in tproglogs:
-    if log:
-        pattern = re.compile(r"hung")
-        result = pattern.findall(log.decode("utf-8"))
-        if result:
-            fitvalue = "0 0 0"
-            fitfile.write(fitvalue)
-            os.system("rm -rf " + sys.argv[1])
-        else:
-            fitvalue = str(end_time-start_time) + " " + str(asmlen) + " " + str((end_time-start_time)/asmlen)
-            fitfile.write(fitvalue)
+    result_hung = str(log).find(r"hung")
+    if result_hung != -1:
+        hung_flag = 1
+
+if hung_flag == 1:
+    fitvalue = "0 0 0"
+    fitfile.write(fitvalue)
+    print("hung: %s " % (sys.argv[1]), sys.stderr)
+    os.system("rm -rf " + sys.argv[1])
+else:
+    fitvalue = str(end_time-start_time) + " " + str(asmlen) + " " + str((end_time-start_time)/asmlen)
+    fitfile.write(fitvalue)
 subtprog.stdout.close()
 fitfile.close()
 
